@@ -26,3 +26,4 @@ For implementation of AIM in continual learning, move to Continual/.
 
 > 📋Pick a licence and describe how to contribute to your code repository. 
 
+# AIM-Fewshot-Continual
