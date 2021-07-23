@@ -1,0 +1,39 @@
+# Few-shot dataset
+nClsEpisode: 5 # number of categories in each episode
+nSupport: 5 # number of samples per category in the support set
+nQuery: 15 # number of samples per category in the query set
+dataset: 'miniImageNet' # choices = ['miniImageNet', 'Cifar']
+
+# Network
+nStep: 5 # number of synthetic gradient steps
+architecture: 'ConvNet_4_64'  # choices = ['WRN_28_10', 'ConvNet_4_64']
+batchSize: 1 # number of episodes in each batch
+aStep: 1 # number of adaptation steps for AIMs hidden state update
+
+# Optimizer
+lr: 0.001 # lr is fixed
+weightDecay: 0.0005 
+momentum: 0.9 
+
+# Training details
+expName: conv_miniimagenet_5shot
+nbIter: 50000 # number of training iterations
+seed: 100 # can be reset with --seed
+gpu: '1' # can be reset with --gpu
+coeffGrad: 0 # grad loss coeff
+resumeFeatPth: 'pretrained_model/mini_Conv_60Epoch_test_52.548/netFeatBest53.629.pth'
+# Testing
+nEpisode: 2000 # number of episodes for testing
+
+
+# AIMs
+useAIM: False
+# rim_hidden: 128 # Hidden dimension of RIMs
+rim_hidden: 256 # Hidden dimension of RIMs
+rim_units: 32 # Number of RIM units
+topk: 8 # Top K of RIM units to backpropagate
+in_key: 128 # input key size of RIMs
+in_query: 128 # input query size of RIMs
+in_value: 800 # input value size of RIMs
+in_heads: 1 # number of input heads of RIMs
+in_dropout: 0 # input dropout of RIMs
