@@ -6,13 +6,13 @@ This repository is the official implementation of [Few-Shot and Continual Learni
 
 ### Directory layout
     .
-    ?œâ??€ Fewshot
-    ??  ?œâ??€ xxx
-    ??  ?”â??€ README.md
-    ?œâ??€ Continual
-    ??  ?œâ??€ xxx
-    ??  ?”â??€ README.md
-    ?”â??€ README.md
+    ¢u€ Fewshot
+    ¢x¢u€ xxx
+    ¢x¢|€ README.md
+    ¢u€ Continual
+    ¢x¢u€ xxx
+    ¢x¢|€ README.md
+    ¢|€ README.md
 
 ## Few-shot learning
 
