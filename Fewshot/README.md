@@ -68,7 +68,7 @@ During the review process, models for pre-trained feature extractor are stored i
 
 Due to upload file size limitation, we only provide pre-trained model for Conv-4-64 trained using CIFAR-FS.
 
-## Results
+## Quantitative Results
 
 Our model achieves the following performance on :
 
