@@ -16,11 +16,14 @@ This repository is the official implementation of [Few-Shot and Continual Learni
 
 ## Few-shot learning
 
-For implementation of AIM in few-shot learning, move to Fewshot/.
+For implementation of AIM in few-shot learning, move to `Fewshot/`.
+
+<img src="Demo/mask-cifar_conv_1shot.gif" width="600">
+
 
 ## Continual learning
 
-For implementation of AIM in continual learning, move to Continual/.
+For implementation of AIM in continual learning, move to `Continual/`.
 
 ## Contributing
 
