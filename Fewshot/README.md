@@ -87,6 +87,29 @@ Our model achieves the following performance on :
 | WRN-28-10   |     80.20±0.55%        |      87.34±0.36%       |
 
 
+## Qualitative Results
+
+### CIFAR-FS
+
+#### Conv-4-64 (1-shot)
+<img src="../Demo/mask-cifar_conv_1shot.gif" width="600">
+#### Conv-4-64 (5-shot)
+<img src="../Demo/mask-cifar_conv_5shot.gif" width="600">
+#### WRN-28-10 (1-shot)
+<img src="../Demo/mask-cifar_wrn_1shot.gif" width="600">
+#### WRN-28-10 (5-shot)
+<img src="../Demo/mask-cifar_wrn_5shot.gif" width="600">
+
+### MiniImageNet
+
+#### Conv-4-64 (1-shot)
+<img src="../Demo/mask-mini_conv_1shot.gif" width="600">
+#### Conv-4-64 (5-shot)
+<img src="../Demo/mask-mini_conv_5shot.gif" width="600">
+#### WRN-28-10 (1-shot)
+<img src="../Demo/mask-mini_wrn_1shot.gif" width="600">
+#### WRN-28-10 (5-shot)
+<img src="../Demo/mask-mini_wrn_5shot.gif" width="600">
 
 
 ## Contributing
