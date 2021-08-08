@@ -91,5 +91,5 @@ Our model achieves the following performance on :
 
 ## Contributing
 
-The code is released for academic research use only. For commercial use, please contact [eugene@ieee.org](eugene@ieee.org).
+The code is released for academic research use only. For commercial use, please contact [eugenelet.ee06g@nctu.edu.tw](eugenelet.ee06g@nctu.edu.tw).
 
