@@ -17,65 +17,79 @@ All experiments can be run on a single NVIDIA GTX1080Ti GPU.
 
 The code was tested with python3.6 the following software versions:
 
-| Software        | version | 
-| ------------- |-------------| 
-| cuDNN         | v7500 |
+| Software        | version |
+| ------------- |-------------|
+| cuDNN         | 7.6.5 |
 | Pytorch      | 1.5.0  |
-| CUDA | v10.0    |
+| CUDA | 10.2    |
 
 
 ## Training
 
 ### Pretrain features
 
-Model: `ConvNet_4_64` and `WRN_28_10`
 
-Dataset: `miniImageNet` and `Cifar`
+| argument        | parameters |
+| ------------- |-------------|
+| model         | `ConvNet_4_64` or `WRN_28_10` |
+| dataset      | `miniImageNet` or `Cifar` |
+| config | `config/` + `Conv_CIFAR_1shot.yaml` or `Conv_CIFAR_5shot.yaml` or `Conv_miniImageNet_1shot.yaml` or `Conv_miniImageNet_5shot.yaml` or `WRN_CIFAR_1shot.yaml` or `WRN_CIFAR_5shot.yaml` or `WRN_miniImageNet_1shot.yaml` or `WRN_miniImageNet_5shot.yaml`   |
+
+
+To pre-train the feature extractor(s) used in the paper, run this command: (example for training a WRN-28-10 on miniImageNet)
+
 ```
-python3 train_feat.py --outDir pretrained_model/miniImageNet_WRN_60Epoch_base --cuda --dataset miniImageNet  --nbEpoch 60 --config config/WRN_miniImageNet_1shot.yaml --useAIM
+python3 train_feat.py --outDir pretrained_model/miniImageNet_WRN_60Epoch_base --cuda --dataset miniImageNet --model WRN_28_10  --nbEpoch 60 --config config/WRN_miniImageNet_1shot.yaml
 ```
 
 
 ### Meta-learning
 
+To train the meta-learner used for few-shot classification in the paper, run this command: (example for training a WRN-28-10 on miniImageNet)
+
 ```
- python3 main.py --config config/Conv_miniImageNet_1shot.yaml --seed 100 --gpu 3 --useAIM
+ python3 main.py --config config/WRN_miniImageNet_1shot.yaml --seed 100 --gpu 0 --useAIM
 ```
 
 
 
 ## Evaluation
 
-To evaluate my model on ImageNet, run:
+To evaluate the trained WRN-28-10 on miniImageNet, run:
 
 ```eval
-python eval.py --model-file mymodel.pth --benchmark imagenet
+python3 main.py --config config/WRN_miniImageNet_1shot.yaml --seed 100 --gpu 0 --useAIM --ckpt path/to/pretrained_model
 ```
 
-> ??Describe how to evaluate the trained models on benchmarks reported in the paper, give commands that produce the results (section below).
 
 ## Pre-trained Models
 
-You can download pretrained models here:
+During the review process, models for pre-trained feature extractor are stored in `pretrained_model/DATASET_MODEL_numEpoch_xx.xxx` and models for meta-learner are stored in `pretrained_meta_model/netAIM_MODEL_DATASET_numshot.pth`
 
-- [My awesome model](https://drive.google.com/mymodel.pth) trained on ImageNet using parameters x,y,z. 
-
-> ??Give a link to where/how the pretrained models can be downloaded and how they were trained (if applicable).  Alternatively you can have an additional column in your results table with a link to the models.
+Due to upload file size limitation, we only provide pre-trained model for Conv-4-64 trained using CIFAR-FS.
 
 ## Results
 
 Our model achieves the following performance on :
 
-### [Image Classification on ImageNet](https://paperswithcode.com/sota/image-classification-on-imagenet)
+### Image Classification on MiniImageNet 5-way
 
-| Model name         | Top 1 Accuracy  | Top 5 Accuracy |
+| Model         | [1-shot Accuracy](https://paperswithcode.com/sota/few-shot-image-classification-on-mini-2)  | [5-shot Accuracy](https://paperswithcode.com/sota/few-shot-image-classification-on-mini-3) |
 | ------------------ |---------------- | -------------- |
-| My awesome model   |     85%         |      95%       |
+| Conv-4-64   |     61.90±0.57%        |      74.55±0.38%       |
+| WRN-28-10   |     71.22±0.57%        |      82.25±0.34%       |
 
-> ??Include a table of results from your paper, and link back to the leaderboard for clarity and context. If your main result is a figure, include that figure and link to the command or notebook to reproduce it. 
+### Image Classification on CIFAR-FS 5-way
+
+| Model         | [1-shot Accuracy](https://paperswithcode.com/sota/few-shot-image-classification-on-cifar-fs-5)  | [5-shot Accuracy](https://paperswithcode.com/sota/few-shot-image-classification-on-cifar-fs-5-1) |
+| ------------------ |---------------- | -------------- |
+| Conv-4-64   |     71.09±0.62%        |      80.48±0.40%       |
+| WRN-28-10   |     80.20±0.55%        |      87.34±0.36%       |
+
+
 
 
 ## Contributing
 
-> ??Pick a licence and describe how to contribute to your code repository. 
+The code is released for academic research use only. For commercial use, please contact [eugene@ieee.org](eugene@ieee.org).
 
